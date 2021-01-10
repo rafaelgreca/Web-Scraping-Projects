@@ -1,0 +1,47 @@
+{
+    "stream": {
+        "_id": 40132340781,
+        "game": "Overwatch",
+        "broadcast_platform": "live",
+        "community_id": "",
+        "community_ids": [],
+        "viewers": 2756,
+        "video_height": 900,
+        "average_fps": 59,
+        "delay": 0,
+        "created_at": "2021-01-10T17:38:22Z",
+        "is_playlist": false,
+        "stream_type": "live",
+        "preview": {
+            "small": "https://static-cdn.jtvnw.net/previews-ttv/live_user_emongg-80x45.jpg",
+            "medium": "https://static-cdn.jtvnw.net/previews-ttv/live_user_emongg-320x180.jpg",
+            "large": "https://static-cdn.jtvnw.net/previews-ttv/live_user_emongg-640x360.jpg",
+            "template": "https://static-cdn.jtvnw.net/previews-ttv/live_user_emongg-{width}x{height}.jpg"
+        },
+        "channel": {
+            "mature": false,
+            "status": "Sunday :) - Live every day at 12pm ET :) - !youtube !ibp",
+            "broadcaster_language": "en",
+            "broadcaster_software": "",
+            "display_name": "Emongg",
+            "game": "Overwatch",
+            "language": "en",
+            "_id": 23220337,
+            "name": "emongg",
+            "created_at": "2011-07-01T20:42:04.840954Z",
+            "updated_at": "2021-01-10T19:28:47.64742Z",
+            "partner": true,
+            "logo": "https://static-cdn.jtvnw.net/jtv_user_pictures/10c36ad0a4756df8-profile_image-300x300.png",
+            "video_banner": "https://static-cdn.jtvnw.net/jtv_user_pictures/9dee2ef758891531-channel_offline_image-1920x1080.jpeg",
+            "profile_banner": "https://static-cdn.jtvnw.net/jtv_user_pictures/666c7e89-f9f4-4955-bedc-e85af842a37f-profile_banner-480.png",
+            "profile_banner_background_color": "",
+            "url": "https://www.twitch.tv/emongg",
+            "views": 28277493,
+            "followers": 565198,
+            "broadcaster_type": "",
+            "description": "   ",
+            "private_video": false,
+            "privacy_options_enabled": false
+        }
+    }
+}
