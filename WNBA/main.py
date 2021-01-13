@@ -38,19 +38,19 @@ class WNBAWrapper:
         first_year = 2019
         last_year = 2019
 
-        last_game = {'ATL': '', 'CHI': '', 'CON': '', 'CHA': '', 'CLE': '', 'DAL': '', 'HOU': '',
-                    'IND': '', 'LAS': '', 'LVA': '', 'MIA': '', 'MIN': '', 'NYL': '', 'PHO': '',
-                    'POR': '', 'SAC': '', 'SAS': '', 'SEA': '', 'TUL': '', 'UTA': '', 'WAS': ''}
-
-        wins = {'ATL': 0, 'CHI': 0, 'CON': 0, 'CHA': 0, 'CLE': 0, 'DAL': 0, 'HOU': 0,
-                'IND': 0, 'LAS': 0, 'LVA': 0, 'MIA': 0, 'MIN': 0, 'NYL': 0, 'PHO': 0,
-                'POR': 0, 'SAC': 0, 'SAS': 0, 'SEA': 0, 'TUL': 0, 'UTA': 0, 'WAS': 0}
-
-        losses = {'ATL': 0, 'CHI': 0, 'CON': 0, 'CHA': 0, 'CLE': 0, 'DAL': 0, 'HOU': 0,
-                  'IND': 0, 'LAS': 0, 'LVA': 0, 'MIA': 0, 'MIN': 0, 'NYL': 0, 'PHO': 0,
-                  'POR': 0, 'SAC': 0, 'SAS': 0, 'SEA': 0, 'TUL': 0, 'UTA': 0, 'WAS': 0}
-
         while first_year <= last_year:
+
+            last_game = {'ATL': '', 'CHI': '', 'CON': '', 'CHA': '', 'CLE': '', 'DAL': '', 'HOU': '',
+                         'IND': '', 'LAS': '', 'LVA': '', 'MIA': '', 'MIN': '', 'NYL': '', 'PHO': '',
+                         'POR': '', 'SAC': '', 'SAS': '', 'SEA': '', 'TUL': '', 'UTA': '', 'WAS': ''}
+
+            wins = {'ATL': 0, 'CHI': 0, 'CON': 0, 'CHA': 0, 'CLE': 0, 'DAL': 0, 'HOU': 0,
+                    'IND': 0, 'LAS': 0, 'LVA': 0, 'MIA': 0, 'MIN': 0, 'NYL': 0, 'PHO': 0,
+                    'POR': 0, 'SAC': 0, 'SAS': 0, 'SEA': 0, 'TUL': 0, 'UTA': 0, 'WAS': 0}
+
+            losses = {'ATL': 0, 'CHI': 0, 'CON': 0, 'CHA': 0, 'CLE': 0, 'DAL': 0, 'HOU': 0,
+                      'IND': 0, 'LAS': 0, 'LVA': 0, 'MIA': 0, 'MIN': 0, 'NYL': 0, 'PHO': 0,
+                      'POR': 0, 'SAC': 0, 'SAS': 0, 'SEA': 0, 'TUL': 0, 'UTA': 0, 'WAS': 0}
 
             #start_time = time.time()
             bar = progressbar.ProgressBar(max_value = progressbar.UnknownLength)
@@ -139,7 +139,7 @@ class WNBAWrapper:
                             data.loc[index, 'opptDayOff'] = int(days_off.days) - 1
 
                             #replace the last game date for the current date
-                            last_game[team_home_abbr_formated] == game_date_formated
+                            last_game[team_home_abbr_formated] = game_date_formated
 
                         #first game of the season (away team)
                         if last_game[team_away_abbr_formated] == '':
@@ -151,7 +151,7 @@ class WNBAWrapper:
                             data.loc[index, 'teamDayOff'] = int(days_off.days) - 1
 
                             #replace the last game date for the current date
-                            last_game[team_away_abbr_formated] == game_date_formated
+                            last_game[team_away_abbr_formated] = game_date_formated
 
                         #boxscore link
                         tablescore_cell = tr.find('td', {'class': 'center'})
