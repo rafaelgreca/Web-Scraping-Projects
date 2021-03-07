@@ -103,21 +103,25 @@ class NbaBoxScoreScrapper():
             #get the date from the first playoffs game in that season
             playoffs_first_date = 'https://www.basketball-reference.com/playoffs/NBA_' + str(first_season_year) + '_games.html'
             request = requests.get(playoffs_first_date)
-            soup = BeautifulSoup(request.text, 'html.parser')
-            game_days = soup.find_all('th', attrs={"data-stat": "date_game", "class": "left"})
 
-            #format the data
-            datee = str(game_days[0].text.strip())
-            _, month_day, year = datee.split(',')
-            month, day = (month_day.strip()).split(' ')
-                    
-            if int(day) > 0 and int(day)<10:
-                day = '0' + day
+            if request:
+                soup = BeautifulSoup(request.text, 'html.parser')
+                game_days = soup.find_all('th', attrs={"data-stat": "date_game", "class": "left"})
 
-            date_formated = year.strip() + '-' + monthss[month] + '-' + day
-            date_formated_url = year.strip() + monthss[month] + day
-            playoff_first_game_date = date(int(year.strip()), int(monthss[month]), int(day))
-    
+                #format the data
+                datee = str(game_days[0].text.strip())
+                _, month_day, year = datee.split(',')
+                month, day = (month_day.strip()).split(' ')
+                        
+                if int(day) > 0 and int(day)<10:
+                    day = '0' + day
+
+                date_formated = year.strip() + '-' + monthss[month] + '-' + day
+                date_formated_url = year.strip() + monthss[month] + day
+                playoff_first_game_date = date(int(year.strip()), int(monthss[month]), int(day))
+            else:
+                playoff_first_game_date = date(2099, 12, 31)
+
             index = 0
 
             teams_day_off = {'ATL': '', 'BKN': '', 'BOS': '', 'CHA': '', 'CHI': '', 'CLE': '', 'DAL': '', 'DEN': '', 'DET': '', 'GS': '',
@@ -575,7 +579,7 @@ class NbaBoxScoreScrapper():
                             data.loc[index, 'matchWinner'] = team_abbrs[home_team_names[i].text.strip()]
 
                         index += 1
-                        time.sleep(0.2)
+                        time.sleep(1.3)
                         bar.update(index+1)
             
                 #fill the missing values with zero
@@ -597,4 +601,4 @@ class NbaBoxScoreScrapper():
 if __name__ == "__main__":
   
     boxscore_scrap = NbaBoxScoreScrapper('NBA_BoxScore/data/')
-    boxscore_scrap.GetDatas(first_season = '2019-20')
+    boxscore_scrap.GetDatas(first_season = '2020-21')
