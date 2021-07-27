@@ -143,6 +143,7 @@ class NbaBoxScoreScrapper():
                 visitor_pts = soup.find_all('td', attrs={"data-stat": "visitor_pts", "class": "right"})
                 home_team_names = soup.find_all('td', attrs={"data-stat": "home_team_name", "class": "left"})
                 home_pts = soup.find_all('td', attrs={"data-stat": "home_pts", "class": "right"})
+                notes = soup.find_all('td', attrs={"data-stat": "game_remarks"})
 
                 #get the data from each day
                 for i in range(len(game_days)):
@@ -567,11 +568,14 @@ class NbaBoxScoreScrapper():
                         data.loc[index, 'opptLoc'] = 'Home'
                         data.loc[index, 'opptPTS'] = h_pts
 
-                        #check if the game is from regular season or playoffs
-                        if game_date < playoff_first_game_date:
-                            data.loc[index, 'seasonType'] = 'Regular'
+                        #check if the game is from regular season, play-in or playoffs
+                        if notes[i].text.strip() != '':
+                            data.loc[index, 'seasonType'] = 'Play-In'
                         else:
-                            data.loc[index, 'seasonType'] = 'Playoffs'
+                            if game_date < playoff_first_game_date:
+                                data.loc[index, 'seasonType'] = 'Regular'
+                            else:
+                                data.loc[index, 'seasonType'] = 'Playoffs'
 
                         if v_pts > h_pts:
                             data.loc[index, 'matchWinner'] = team_abbrs[visitor_team_names[i].text.strip()]
